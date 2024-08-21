@@ -1,0 +1,152 @@
+/*  Author : Chintan Prajapati & Shrey Nayak
+    Theme : Food Order Website
+    Date :
+*/
+*{
+    margin: 0 0;
+    padding: 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.wrapper{
+    padding: 2%;
+    width: 80%;
+    margin: 0 auto;
+}
+.text-center{
+    text-align: center;
+}
+
+.clearfix{
+    float: none;
+    clear: both;
+}
+
+.tbl-full{
+    width: 100%;
+}
+
+.tbl-30{
+    width: 30%;
+}
+
+table tr th{
+    border-bottom: 1px solid black;
+    padding: 1%;
+    text-align: left;
+}
+
+table tr td{
+    padding: 1%;
+}
+
+.btn-primary{
+    /* background-color: #25CCF7; */
+    padding: 1%;
+    /* border-radius: 30%; */
+    background-color: #1e8fff23;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    box-shadow: 1px 1px 3px rgba(0,0,0,1),
+    -1px -1px 3px white;
+}
+.btn-primary:hover{
+    background-color: #1e8fff6f;
+    box-shadow: 1px 1px 3px rgba(0,0,0,1) inset,
+    -1px -1px 3px white inset;
+}
+.btn-secondary{
+    /* background-color: #7bed9f; */
+    background-color: #2ed57427;
+    padding: 1%;
+    /* border-radius: 35%; */
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    box-shadow: 1px 1px 3px rgb(0, 0, 0),
+    -1px -1px 3px white;
+}
+.btn-secondary:hover{
+    background-color: #2ed57465;
+    box-shadow: 1px 1px 3px rgb(0, 0, 0) inset,
+    -1px -1px 3px white inset;
+}
+.btn-danger{
+    /* background-color: #ff6b8125; */
+    background-color: #ff47562b;
+    padding: 1%;
+    /* border-radius: 35%; */
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    box-shadow: 1px 1px 3px rgba(0,0,0,1),
+    -1px -1px 3px white;
+}
+.btn-danger:hover{
+    background-color: #ff475664;
+    box-shadow: 1px 1px 3px rgba(0,0,0,1)inset,
+    -1px -1px 3px white inset;
+}
+
+.success{
+    color:#05c46b;
+}
+.error{
+    color: #eb2f06;
+}
+/* Css Fore Menu */
+.menu{
+    /* text-align:center; */
+    border-bottom: 1px solid grey;
+}
+.menu ul{
+    list-style-type: none;
+}
+.menu ul li{
+    display: inline;
+    padding: 1%;
+}
+.menu ul li a{
+    background-color: #ff6b8127;
+    padding: 1%;
+    text-decoration: none;
+    font-weight: bold;
+    color:black;
+    border-radius: 20%;
+    /* border-radius: 45%; */
+    transition:50ms;
+}
+.menu ul li a:hover{
+    background-color: #ff6b818e;
+    border-radius: 45%;
+    /* border-radius: 20%; */
+    box-shadow: 1px 1px 3px rgba(0,0,0,1),
+    -1px -1px 3px white ;
+}
+
+/* Css For Main Content */
+.main-content{
+    /* margin: 1% 0; */
+    background-color: #f1f2f6;
+    padding:  3% 0;
+}
+.col-4{
+    width: 18%;
+    background-color: white;
+    margin: 1%;
+    padding: 2%;
+    float: left;
+}
+/* Css For Footer */
+.footer{
+    background-color: #ff4757;
+    color: white;
+}
+/* Css For Login */
+
+.login{
+    border: 1px solid grey;
+    width: 30%;
+    margin: 10% auto;
+    padding: 2%;
+}
