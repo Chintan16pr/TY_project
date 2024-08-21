@@ -1,11 +1,18 @@
-<?php include('partials/menu.php'); ?>
 
+<?php include('partials/menu.php'); ?>
 <div class="main-content">
     <div class="wrapper">
         <h1>Add Category</h1>
         
         <br><br><br>
         
+        <?php
+            if(isset($_SESSION))
+            {
+                echo $_SESSION['add'];
+                unset( $_SESSION['add']);
+            }
+        ?>
         <!--  Add Category Starts -->
         <form action="" method="POST">
 
@@ -33,20 +40,71 @@
 
                 <tr>
                     <td colspan="2">
-                        <input type="button" name="submit" value="Add Category" class="btn-secondary">
+                        <input type="submit" name="submit" value="Add Category" class="btn-secondary">
+
                     </td>
                 </tr>
             </table>
-
         </form>
         <!--  Add Category Ends -->
         <?php 
             // Check Wether the Submit is Clicked or Not
             if(isset($_POST['submit']))
+        {
+                #echo " Is Clicked";
+
+                #1. get the value from category form
+
+                $title = $_POST['title'];
+
+                #2. for radio input we need to check wether selected or not
+             if(isset($_POST['featured']))
             {
-                echo "Clicked";
+                $featured = $_POST['featured'];
             }
-        ?>       
+            else
+            {
+                $featured = "No";
+            }
+            if(isset($_POST['active']))
+            {
+                $active = $_POST['active'];
+            }
+            else
+            {
+                $active = "No";
+            }
+
+            #2. create sql query to insert category in database
+
+            $sql = "INSERT INTO tbl_category SET 
+                   title  = '$title',
+                   featured = '$featured',
+                   active = '$active'
+
+            ";
+                #3. Execute the query and save it in database
+
+                $res = mysqli_query($conn, $sql);
+
+                #4. check wehter the query executed or not and data inserted or not
+
+                if($res==TRUE)
+                {
+                    # query executed and data inserted 
+                    $_SESSION['add'] = "<div class='success'>Category Added Successfully.</div>";
+                    //redirect to menu
+                    header("location:".SITEURL.'admin/manage-category.php');
+                }
+                else
+                {
+                    # failed to add data
+                    $_SESSION['add'] = "<div class='error'>Failed to add category.</div>";
+                    //redirect to menu
+                    header("location:".SITEURL.'admin/add-category.php');
+                }
+        }
+        ?>
     </div>
 </div>
 
