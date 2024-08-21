@@ -5,6 +5,19 @@
         <h1>MANAGE CATEGORY</h1>
         <br/><br/><br/>
 
+        <?php
+            if(isset($_SESSION['remove']))
+            {
+                echo $_SESSION['remove'];
+                unset($_SESSION['remove']);
+            }
+            if(isset($_SESSION['delete']))
+            {
+                echo $_SESSION['delete'];
+                unset($_SESSION['delete']);
+            }
+        ?>
+
                 <!-- Button to Add Admin -->
                  <a href="<?php echo SITEURL; ?>admin/add-category.php" class="btn-primary">Add Category</a>
                  
