@@ -50,6 +50,20 @@
                         {
                             // We have Data in Database
                             // Get Data and Display
+                            while($row=mysqli_fetch_assoc($res))
+                            {
+                                $id = $row['id'];
+                                $title = $row['title'];
+                                $image_name = $row['image_name'];
+                                $featured = $row['featured'];
+                                $active = $row['active'];
+                                ?>
+
+                                    <tr>
+                                        
+                                    </tr>
+                                <?php
+                            }
                         }
                         else
                         {
@@ -68,10 +82,11 @@
 
                     <tr>
                         <td>1.</td>
-                        <td>chintan prajapati</td>
-                        <td>ChintanPrajapati2005</td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $title; ?></td>
+                        <td><?php echo $image_name; ?></td>
+                        <td><?php echo $featured; ?></td>
+                        <td><?php echo $active; ?></td>
+
                         <td>
                             <a href="#" class="btn-secondary">Update Category</a>
                             <a href="#" class="btn-danger">Delete Category</a>
