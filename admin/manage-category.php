@@ -45,6 +45,9 @@
                         // Count Rows
                         $count = mysqli_num_rows($res);
 
+                        // Create Serial Number Variable
+                        $sn=1;
+
                         // Check Wether WE Have Data in Database or Not 
                         if($count > 0)
                         {
@@ -60,9 +63,37 @@
                                 ?>
 
                                     <tr>
+                                        <td><?php echo $sn++; ?>.</td>
+                                        <td><?php echo $title; ?></td>
+
+                                        <td>
+                                            <?php 
+                                                // Check Wether The Image is Available or Not
+                                                if($image_name!="")
+                                                {
+                                                    // Display The Image
+                                                    ?>
+                                                    <img src="<?php echo SITEURL;?>images/category/<?php echo $image_name; ?>" width="100px" >
+                                                    <?php
+                                                }
+                                                else
+                                                {
+                                                    // Display The Message
+                                                    echo "<div class='error'> Image Is Not Added .</div>";
+                                                }
+                                            ?>
+                                        </td>
                                         
+                                        <td><?php echo $featured; ?></td>
+                                        <td><?php echo $active; ?></td>
+                                        <td>
+                                            <a href="#" class="btn-secondary">Update Category</a>
+                                            <a href="#" class="btn-danger">Delete Category</a>
+                                        </td>
                                     </tr>
+
                                 <?php
+                                
                             }
                         }
                         else
@@ -80,18 +111,6 @@
 
                     ?>
 
-                    <tr>
-                        <td>1.</td>
-                        <td><?php echo $title; ?></td>
-                        <td><?php echo $image_name; ?></td>
-                        <td><?php echo $featured; ?></td>
-                        <td><?php echo $active; ?></td>
-
-                        <td>
-                            <a href="#" class="btn-secondary">Update Category</a>
-                            <a href="#" class="btn-danger">Delete Category</a>
-                        </td>
-                    </tr>
                 </table>
     </div>
 </div>
