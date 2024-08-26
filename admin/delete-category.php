@@ -2,12 +2,12 @@
     // Include Constanta File
     include('../config/constants.php');
 
-    // echo "Delete";
+    // echo "Delete";   
     // Check Wether the id and image_name is set or not
-    if(isset($_GET['id'] ANd isset($_GET['image_name'])))
+    if(isset($_GET['id']) AND isset($_GET['image_name']))
     {
         // Get the Value and Delete
-        // echo "Get Value and Delete"
+        // echo "Get Value and Delete";
         $id = $_GET['id'];
         $image_name = $_GET['image_name'];
 
@@ -27,7 +27,7 @@
                 // Redirect to manage category page
                 header('location:'.SITEURL.'admin/manage-category.php');
                 // Stop the process
-                die()
+                die();
             }
         }
 
@@ -42,13 +42,13 @@
         if($res == TRUE)
         {
             // Set Success message and redirect
-            $_SESSION['delete'] = "<div class='success'>Category Deleted Successfully.</div>"
+            $_SESSION['delete'] = "<div class='success'>Category Deleted Successfully.</div>";
             header('location:'.SITEURL.'admin/manage-category.php');
         }
         else
         {
             // Set Faile message and redirect
-            $_SESSION['delete'] = "<div class='error'>Failed Deleted Category.</div>"
+            $_SESSION['delete'] = "<div class='error'>Failed Deleted Category.</div>";
             header('location:'.SITEURL.'admin/manage-category.php');
         }
 

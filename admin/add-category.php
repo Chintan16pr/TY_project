@@ -12,6 +12,12 @@
                 echo $_SESSION['add'];
                 unset($_SESSION['add']);
             }
+
+            if(isset($_SESSION['upload']))
+            {
+                echo $_SESSION['upload'];
+                unset( $_SESSION['upload']);
+            }
         ?>
 
         <br><br>
@@ -45,8 +51,8 @@
                 <tr>
                     <td>Active :</td>
                     <td>
-                        <input type="radio" name="active" name="Yes"> Yes
-                        <input type="radio" name="active" name="No"> No
+                        <input type="radio" name="active" value="Yes"> Yes
+                        <input type="radio" name="active" value="No"> No
                     </td>
                 </tr>
 
@@ -97,32 +103,36 @@
                 // to upload image we need image name, source path and destination path
                 $image_name = $_FILES['image']['name'];
 
-                // Auto Rename our Image
-                // Get the Extention of our image (jpg, png , gif ,etc)
-                $ext = end(explode('.' , $image_name));
-
-                // Rename the Image
-                $image_name = "Food_category_".rand(000,999).'.'.$ext;
-
-                $source_path = $_FILES['image']['tmp_name'];
-
-                $destination_path = "../images/category/".$image_name;
-
-                // Finally Upload the Image
-                $upload = move_uploaded_file($source_path,$destination_path);
-
-                // Check Wether the Image is Uploaded or Not 
-                // And if Image is Not Uploaded then we will Stop the Process and Redirect With Error Message
-                if($upload == false)
+                // Upload the image only if image is selected
+                if($image_name != "")
                 {
-                    // Set Message
-                    $_SESSION['upload'] = "<div class=''error> Failed to Upload Image</div>";
-                    // Redirect to Add Category Page
-                    header('location:'.SITEURL.'admin/add-category.php');
-                    // Stop the Process
-                    die();
-                }
 
+                    // Auto Rename our Image
+                    // Get the Extention of our image (jpg, png , gif ,etc)
+                    $ext = end(explode('.' , $image_name));
+
+                    // Rename the Image
+                    $image_name = "Food_category_".rand(000,999).'.'.$ext;
+
+                    $source_path = $_FILES['image']['tmp_name'];
+
+                    $destination_path = "../images/category/".$image_name;
+
+                    // Finally Upload the Image
+                    $upload = move_uploaded_file($source_path,$destination_path);
+
+                    // Check Wether the Image is Uploaded or Not 
+                    // And if Image is Not Uploaded then we will Stop the Process and Redirect With Error Message
+                    if($upload == false)
+                    {
+                        // Set Message
+                        $_SESSION['upload'] = "<div class='error'> Failed to Upload Image</div>";
+                        // Redirect to Add Category Page
+                        header('location:'.SITEURL.'admin/manage-category.php');
+                        // Stop the Process
+                        die();
+                    }
+                }
             }
             else
             {
