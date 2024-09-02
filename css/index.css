@@ -95,6 +95,7 @@ table tr td{
 .error{
     color: #eb2f06;
 }
+
 /* Css Fore Menu */
 .menu{
     /* text-align:center; */
@@ -108,7 +109,7 @@ table tr td{
     padding: 1%;
 }
 .menu ul li a{
-    background-color: #ff6b8127;
+    background-color: #1f8dfc61;
     padding: 1%;
     text-decoration: none;
     font-weight: bold;
@@ -118,7 +119,7 @@ table tr td{
     transition:50ms;
 }
 .menu ul li a:hover{
-    background-color: #ff6b818e;
+    background-color: #0680fa;
     border-radius: 45%;
     /* border-radius: 20%; */
     box-shadow: 1px 1px 3px rgba(0,0,0,1),
