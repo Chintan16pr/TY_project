@@ -39,6 +39,9 @@
                         // Count Rows to Check Whether we have food or Not
                         $count = mysqli_num_rows($res);
 
+                        // Create Serial Number Variable and Set Default Value as 1
+                        $sn = 1;
+
                         if($count > 0)
                         {
                             // WE Have Food in Database
@@ -55,12 +58,30 @@
                                 ?>
 
                                 <tr>
-                                    <td>1.</td>
-                                    <td></td>
-                                    <td>₹20</td>
-                                    <td>Image</td>
-                                    <td>Yes</td>
-                                    <td>No</td>
+                                    <td><?php echo $sn++; ?>.</td>
+                                    <td><?php echo $title; ?></td>
+                                    <td>₹<?php echo $price; ?></td>
+                                    <td>
+                                        <?php 
+                                            // Check Whether We Have Image or Not
+                                            if($image_name == "")
+                                            {
+                                                // We Do Not Have Image
+                                                // Display Error Message
+                                                echo "<div class='error'>Image Not Added.</div>";
+                                            }
+                                            else
+                                            {
+                                                // We Have Image
+                                                // Display Image
+                                                ?>
+                                                <img src="<?php echo SITEURL; ?>Images/food/<?php echo $image_name; ?>" width="100px">
+                                                <?php
+                                            }
+                                        ?>
+                                    </td>
+                                    <td><?php echo $featured; ?></td>
+                                    <td><?php echo $actice; ?></td>
                                     <td>
                                         <a href="#" class="btn-secondary">Update Admin</a>
                                         <a href="#" class="btn-danger">Delete Admin</a>

@@ -16,7 +16,7 @@
 
         <br><br>
 
-        <form action="" method="POST" inctype="multipart/form-data">
+        <form action="" method="POST" enctype="multipart/form-data">
 
             <table class="tbl-30">
                 <tr>
@@ -153,14 +153,13 @@
                     $image_name = $_FILES['image']['name'];
 
                     // Check Wether the Image is Selected or Not
-                    if($image_name != "")
+                    if($image_name!= "")
                     {
                         // Image is Selectd 
 
                         // A. Rename the Image 
                         // Get the Extantion of Selected Image 
                         $ext = end(explode('.',$image_name));
-
                         // Create New Name For Image
                         $image_name = "Food-Name-".rand(0000,9999).".".$ext; // New Image Name 
 
@@ -168,7 +167,7 @@
                         // Get the src Path And Destination Path
 
                         // Source path is Current Location of The Image
-                        $src = $_FILES['iamge']['tmp_name'];
+                        $src = $_FILES['image']['tmp_name'];
 
                         // Destination path for the Image to be Uploaded
                         $dst = "../images/food/".$image_name; 
@@ -192,7 +191,7 @@
                 }
                 else
                 {
-                    $iamgae_name="";    // Setting Default Value as Blank
+                    $image_name="";    // Setting Default Value as Blank
                 }
 
                 // 3. Insert into Database
