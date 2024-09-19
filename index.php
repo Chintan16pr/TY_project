@@ -18,34 +18,49 @@
         <div class="container">
             <h2 class="text-center">Explore Foods</h2>
 
-            <a href="category-foods.html">
-            <div class="box-3 float-container">
-                <img src="images/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
+            <?php 
+                // Create Sql Query to Display Category From Database
+                $sql = "SELECT * FROM tbl_category";
+                // Execute the Query
+                $res = mysqli_query($conn ,$sql);
+                // Count Rows to Check WEther the CAtegory is Available or Not
+                $count = mysqli_num_rows($res);
 
-                <h3 class="float-text text-white">Pizza</h3>
-            </div>
-            </a>
+                if($count > 0 )
+                {
+                    // Category Available
+                    while($row=mysqli_fetch_assoc($res))
+                    {
+                        // Get The Value Like Id,Title,Image Name 
+                        $id = $row['id'];
+                        $title = $row['title'];
+                        $image_name = $row['image_name'];
+                        ?>
+                            <a href="category-foods.html">
+                            <div class="box-3 float-container">
+                                <img src="images/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/burger.jpg" alt="Burger" class="img-responsive img-curve">
+                                <h3 class="float-text text-white">Pizza</h3>
+                            </div>
+                            </a>
+                        <?php
 
-                <h3 class="float-text text-white">Burger</h3>
-            </div>
-            </a>
+                    }
+                }
+                else
+                {
+                    // Category Not Available
+                    echo "<div class='error'>Category Not Added.</div>";
+                }
+            ?>
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/momo.jpg" alt="Momo" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Momo</h3>
-            </div>
-            </a>
 
             <div class="clearfix"></div>
         </div>
     </section>
     <!-- Categories Section Ends Here -->
+
+
 
     <!-- fOOD MEnu Section Starts Here -->
     <section class="food-menu">
