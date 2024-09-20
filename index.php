@@ -20,7 +20,7 @@
 
             <?php 
                 // Create Sql Query to Display Category From Database
-                $sql = "SELECT * FROM tbl_category";
+                $sql = "SELECT * FROM tbl_category WHERE active='Yes' AND featured='Yes' LIMIT 3";
                 // Execute the Query
                 $res = mysqli_query($conn ,$sql);
                 // Count Rows to Check WEther the CAtegory is Available or Not
@@ -38,9 +38,22 @@
                         ?>
                             <a href="category-foods.html">
                             <div class="box-3 float-container">
-                                <img src="images/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
+                                <?php 
+                                // Check Wether Image is Available or Not
+                                    if($image_name == "")
+                                    {
+                                        // Display Message
+                                        echo "<div class='error'>Image Not Available</div>";
+                                    }
+                                    else{
+                                        // Image Available
+                                        ?>
+                                        <img src="<?php echo SITEURL; ?>images/category/<?php echo $image_name;?>" alt="Pizza" class="img-responsive img-curve">
+                                        <?php
+                                    }
+                                ?>
 
-                                <h3 class="float-text text-white">Pizza</h3>
+                                <h3 class="float-text text-white"><?php echo $title;?></h3>
                             </div>
                             </a>
                         <?php
