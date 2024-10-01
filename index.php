@@ -1,46 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- Important to make website responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Website</title>
-
-    <!-- Link our CSS file -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-    <!-- Navbar Section Starts Here -->
-    <section class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="#" title="Logo">
-                    <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive">
-                </a>
-            </div>
-
-            <div class="menu text-right">
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="categories.html">Categories</a>
-                    </li>
-                    <li>
-                        <a href="foods.html">Foods</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="clearfix"></div>
-        </div>
-    </section>
-    <!-- Navbar Section Ends Here -->
+    <?php include("partials-front/menu.php"); ?>
 
     <!-- fOOD sEARCH Section Starts Here -->
     <section class="food-search text-center">
@@ -60,34 +18,62 @@
         <div class="container">
             <h2 class="text-center">Explore Foods</h2>
 
-            <a href="category-foods.html">
-            <div class="box-3 float-container">
-                <img src="images/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
+            <?php 
+                // Create Sql Query to Display Category From Database
+                $sql = "SELECT * FROM tbl_category WHERE active='Yes' AND featured='Yes' LIMIT 3";
+                // Execute the Query
+                $res = mysqli_query($conn ,$sql);
+                // Count Rows to Check WEther the CAtegory is Available or Not
+                $count = mysqli_num_rows($res);
 
-                <h3 class="float-text text-white">Pizza</h3>
-            </div>
-            </a>
+                if($count > 0 )
+                {
+                    // Category Available
+                    while($row=mysqli_fetch_assoc($res))
+                    {
+                        // Get The Value Like Id,Title,Image Name 
+                        $id = $row['id'];
+                        $title = $row['title'];
+                        $image_name = $row['image_name'];
+                        ?>
+                            <a href="category-foods.html">
+                            <div class="box-3 float-container">
+                                <?php 
+                                // Check Wether Image is Available or Not
+                                    if($image_name == "")
+                                    {
+                                        // Display Message
+                                        echo "<div class='error'>Image Not Available</div>";
+                                    }
+                                    else{
+                                        // Image Available
+                                        ?>
+                                        <img src="<?php echo SITEURL; ?>images/category/<?php echo $image_name;?>" alt="Pizza" class="img-responsive img-curve">
+                                        <?php
+                                    }
+                                ?>
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/burger.jpg" alt="Burger" class="img-responsive img-curve">
+                                <h3 class="float-text text-white"><?php echo $title;?></h3>
+                            </div>
+                            </a>
+                        <?php
 
-                <h3 class="float-text text-white">Burger</h3>
-            </div>
-            </a>
+                    }
+                }
+                else
+                {
+                    // Category Not Available
+                    echo "<div class='error'>Category Not Added.</div>";
+                }
+            ?>
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/momo.jpg" alt="Momo" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Momo</h3>
-            </div>
-            </a>
 
             <div class="clearfix"></div>
         </div>
     </section>
     <!-- Categories Section Ends Here -->
+
+
 
     <!-- fOOD MEnu Section Starts Here -->
     <section class="food-menu">
@@ -209,31 +195,4 @@
     </section>
     <!-- fOOD Menu Section Ends Here -->
 
-    <!-- social Section Starts Here -->
-    <section class="social">
-        <div class="container text-center">
-            <ul>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/fluent/50/000000/facebook-new.png"/></a>
-                </li>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png"/></a>
-                </li>
-                <li>
-                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png"/></a>
-                </li>
-            </ul>
-        </div>
-    </section>
-    <!-- social Section Ends Here -->
-
-    <!-- footer Section Starts Here -->
-    <section class="footer">
-        <div class="container text-center">
-            <p>All rights reserved. Designed By <a href="#">Vijay Thapa</a></p>
-        </div>
-    </section>
-    <!-- footer Section Ends Here -->
-
-</body>
-</html>
+   <?php include("partials-front/footer.php"); ?>
