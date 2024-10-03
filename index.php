@@ -85,7 +85,7 @@
                 // Getting Food From Database that are active and featured
                 $sql2 = "SELECT * from tbl_food WHERE active='Yes' AND featured = 'Yes' LIMIT 6 ";
                 // Executing Query
-                $res2 = mysqli_query($conn,$sql);
+                $res2 = mysqli_query($conn,$sql2);
                 // count rows
                 $count2 = mysqli_num_rows($res2);
                 // Check Wether Food Available or not
@@ -115,7 +115,7 @@
                                         {
                                             // Image Available
                                             ?>
-                                            <img src="<?php echo SITEURL; ?>images/food/<?php echo ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                                            <img src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
                                             <?php
                                         }
                                     ?>
