@@ -28,14 +28,14 @@
 
                         ?>
 
-                        <a href="category-foods.html">
+                        <a href="<?php echo SITEURL; ?>category-foods.php?category_id=<?php echo $id; ?>">
                             <div class="box-3 float-container">
                                 <?php 
 
                                     if($image_name == "")
                                     {
                                         // image is Not Available
-                                        echo "Image Not Found.";
+                                        echo " <div class='error'>image not found.</div> ";
                                     }
                                     else
                                     {
