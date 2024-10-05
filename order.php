@@ -43,7 +43,7 @@
             
             <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
 
-            <form action="#" class="order">
+            <form action="" method="POST" class="order">
                 <fieldset>
                     <legend>Selected Food</legend>
 
@@ -136,19 +136,19 @@
                     ";
 
                     // Execute the Query
-                    $sql2 = mysqli_query($conn,$sql3);
+                    $res2 = mysqli_query($conn,$sql2);
 
                     // Check Wether Query Executed Successfully or not
-                    if($res2==true)
+                    if($res2 == true)
                     {
                         // query Executed and order saved
-                        $_SESSION['order'] = "<div class='success'>Food Orderd Successfully.</div>";
+                        $_SESSION['order'] = "<div class='success text-center'>Food Orderd Successfully.</div>";
                         header("location:". SITEURL);
                     }
                     else
                     {
                         // Failed to save order
-                        $_SESSION['order'] = "<div class='error'>Failed to Order Food.</div>";
+                        $_SESSION['order'] = "<div class='error text-center'>Failed to Order Food.</div>";
                         header("location:". SITEURL);
                     }
 
