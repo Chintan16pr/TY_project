@@ -113,10 +113,10 @@
 
                     $order_date = date("Y-m-d h:i:sa"); //order date
 
-                    $status = "orderd"; // Ordered, on Delivary, Delivered, Cancelled
+                    $status = "ordered"; // Ordered, on Delivary, Delivered, Cancelled
 
                     $customer_name = $_POST['full-name'];
-                    $customer_contect = $_POST['contact'];
+                    $customer_contact = $_POST['contact'];
                     $customer_email = $_POST['email'];
                     $customer_address = $_POST['address'];
 
