@@ -16,7 +16,7 @@
 
             //get the value from database
 
-            $res = mysqli_fetch_assoc($res);
+            $row = mysqli_fetch_assoc($res);
 
             //get the title
             $category_title = $row['title'];
@@ -52,7 +52,7 @@
         <?php
 
         //create swql query to select foods basewd on selected category
-        $sql2 = " SELECT * FROM tbl_food WHERE category= $category_id ";
+        $sql2 = " SELECT * FROM tbl_food WHERE category_id= $category_id";
 
         //execute the query
 
@@ -91,7 +91,7 @@
                                             //image found
                                             ?>
 
-                                            <img src="<?php echo SITEURL; ?>images/food <?php $image_name; ?>" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                                            <img  src="<?php echo SITEURL;?>images/food/<?php echo $image_name;?>" class="img-responsive img-curve">
 
 
                                             <?php
