@@ -19,6 +19,11 @@
             echo $_SESSION['order'];
             unset($_SESSION['order']);
         }
+        if(isset($_SESSION['login']))
+        {
+            echo $_SESSION['login'];
+            unset($_SESSION['login']);
+        }
     ?>
 
     <!-- CAtegories Section Starts Here -->

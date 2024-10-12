@@ -1,15 +1,15 @@
 <?php 
-    include('../config/constants.php');
+    include('config/constants.php');
 ?>
 
 <html>
         <head>
             <title>Login - Food Order System</title>
-            <link rel="stylesheet" href="../css/index.css">
+            <link rel="stylesheet" href="css/login.css">
         </head>
         <Body>
             <div class="login">
-                <h1 class="text-center">Admin Login</h1>
+                <h1 class="text-center">Login</h1>
                 <br><br>
 
                 <?php
@@ -30,7 +30,7 @@
                 <br><br>
 
                 <!-- Login Form Start Here -->
-                <form action="" method="POST" class="text-center">
+                <form action="" method="POST" class="text-center login-container">
                 Username: <br>
                 <input type="text" name="username" placeholder="Enter Username"><br><br>
                 Password: <br>
@@ -38,8 +38,6 @@
                 <input type="submit" name="submit" value="Submit" class="btn-primary"><br><br>
                 </form> 
                 <!-- Login Form Ends Here -->
-
-                <p class="text-center">Created by - <a href="#">Chintan Prajapati</a> & <a href="#">Shrey Nayak</a></p>
 
             </div>
             
@@ -57,29 +55,37 @@
         $password = md5($_POST['password']);
 
         // 2.SQL to Check Wether the username and password exist or not
-        $sql = "SELECT * FROM tbl_admin WHERE username = '$username' AND password = '$password'";
+        $sql = "INSERT INTO tbl_login SET
+         username = '$username',
+         password ='$password'
+         ";
 
         // 3.Execute the Query
         $res = mysqli_query($conn, $sql);
 
-        // 4.Counts rows to Check wether the User Exists or Not
-        $count = mysqli_num_rows($res);
-
-        if($count == 1)
-        {
-            // User Available and Login Success
+        if($res == true){
             $_SESSION['login'] = "<div class='success text-center'> Login Successfull .</div>";
-            $_SESSION['user'] = $username;//To Check Wether the User is Loggedin Or Not and Logout Will Unset it
-            // Redrect to Home/Dashbord
-            header('location:'.SITEURL.'admin');
+            header('location:'.SITEURL.'index.php');
         }
-        else
-        {
-            // User Not Available and login Fail
-            $_SESSION['login'] = "<div class='error text-center'> Username or Password Did Not Match .</div>";
-            // Redrect to Home/Dashbord
-            header('location:'.SITEURL.'admin/login.php');
-        }
+
+        // // 4.Counts rows to Check wether the User Exists or Not
+        // $count = mysqli_num_rows($res);
+
+        // if($count == 1)
+        // {
+        //     // User Available and Login Success
+        //     $_SESSION['login'] = "<div class='success text-center'> Login Successfull .</div>";
+        //     $_SESSION['user'] = $username;//To Check Wether the User is Loggedin Or Not and Logout Will Unset it
+        //     // Redrect to Home/Dashbord
+        //     header('location:'.SITEURL.'admin');
+        // }
+        // else
+        // {
+        //     // User Not Available and login Fail
+        //     $_SESSION['login'] = "<div class='error text-center'> Username or Password Did Not Match .</div>";
+        //     // Redrect to Home/Dashbord
+        //     header('location:'.SITEURL.'admin/login.php');
+        // }
     }
 
 ?>
