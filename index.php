@@ -11,7 +11,7 @@
 
         </div>
     </section>
-    <!-- food Search Section Ends Here -->
+    <!-- fOOD Search Section Ends Here -->
 
     <?php
         if(isset($_SESSION['order']))
@@ -21,7 +21,7 @@
         }
     ?>
 
-    <!-- Categories Section Starts Here -->
+    <!-- CAtegories Section Starts Here -->
     <section class="categories">
         <div class="container">
             <h2 class="text-center">Explore Foods</h2>
@@ -83,7 +83,7 @@
 
 
 
-    <!-- fOOD Menu Section Starts Here -->
+    <!-- fOOD MEnu Section Starts Here -->
     <section class="food-menu">
         <div class="container">
             <h2 class="text-center">Food Menu</h2>
@@ -131,7 +131,7 @@
 
                                 <div class="food-menu-desc">
                                     <h4><?php echo $title; ?></h4>
-                                    <p class="food-price">₹<?php echo $price; ?></p>
+                                    <p class="food-price">$<?php echo $price; ?></p>
                                     <p class="food-detail">
                                         <?php echo $description; ?>
                                     </p>
@@ -151,12 +151,7 @@
 
             ?>
 
-
-
             <div class="clearfix"></div>
-
-            
-
         </div>
 
         <p class="text-center">
