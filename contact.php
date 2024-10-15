@@ -1,5 +1,5 @@
 <?php include("partials-front/menu.php"); ?>
-
+<!-- Contact Page -->
 <html >
 <head>
     <title>Contact Us</title>
